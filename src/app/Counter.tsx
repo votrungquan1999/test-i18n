@@ -16,7 +16,7 @@ export default function Counter() {
         onClick={() => setCount(count + 1)}
         className="bg-blue-500 border border-slate-200 hover:bg-blue-600 focus:bg-blue-600 text-white p-2 rounded-md"
       >
-        Increment
+        {t("increment")}
       </button>
     </div>
   );
