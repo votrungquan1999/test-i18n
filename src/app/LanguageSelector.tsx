@@ -37,12 +37,12 @@ export default function LanguageSelector({ name, currentLocale }: LanguageSelect
           });
         }}
       >
-        <SelectTrigger className="min-w-48">
+        <SelectTrigger className="w-48 px-2 py-1">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
           {locales.map((locale) => (
-            <SelectItem key={locale} value={locale}>
+            <SelectItem key={locale} value={locale} className="w-48">
               {localesNamesMap[locale]}
             </SelectItem>
           ))}
