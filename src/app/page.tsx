@@ -12,6 +12,14 @@ export default async function Home() {
       <LanguageSelector name="language" currentLocale={locale} key={locale} />
 
       <Counter />
+
+      <hr className="border-slate-200" />
+
+      <GenderProvider>
+        <GenderSelector />
+
+        <Instruction />
+      </GenderProvider>
     </div>
   );
 }
