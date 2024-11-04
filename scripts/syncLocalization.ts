@@ -57,6 +57,8 @@ const supportedLocales = process.env.SUPPORTED_LOCALES?.split(",") || [];
 const apiKey = process.env.LOCALIZELY_API_KEY ?? "";
 const url = `${process.env.LOCALIZELY_URL}/projects/${process.env.LOCALIZELY_PROJECT_ID}/files/download?type=json&export_empty_as=skip`;
 
+console.log({ supportedLocales, url });
+
 try {
   // Download and extract zip
   const zipBuffer = await downloadTranslations(url, apiKey);
