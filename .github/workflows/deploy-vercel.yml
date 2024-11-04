@@ -6,11 +6,6 @@ env:
 
   LOCALIZELY_API_KEY: ${{ secrets.LOCALIZELY_API_KEY }}
 
-  LOCALIZELY_URL: ${{ vars.LOCALIZELY_URL }}
-  LOCALIZELY_PROJECT_ID: ${{ vars.LOCALIZELY_PROJECT_ID }}
-
-  SUPPORTED_LOCALES: ${{ vars.SUPPORTED_LOCALES }}
-
 on:
   push:
     branches:
