@@ -37,7 +37,7 @@ export default function LanguageSelector({ name, currentLocale }: LanguageSelect
           });
         }}
       >
-        <SelectTrigger className="w-48 px-2 py-1">
+        <SelectTrigger className="w-48 px-2 py-1" id={name}>
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
