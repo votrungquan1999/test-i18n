@@ -6,6 +6,11 @@ env:
 
   LOCALIZELY_API_KEY: ${{ secrets.LOCALIZELY_API_KEY }}
 
+  LOCALIZELY_URL: ${{ vars.LOCALIZELY_URL }}
+  LOCALIZELY_PROJECT_ID: ${{ vars.LOCALIZELY_PROJECT_ID }}
+
+  SUPPORTED_LOCALES: ${{ vars.SUPPORTED_LOCALES }}
+
 on:
   push:
     branches:
@@ -16,6 +21,7 @@ on:
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest
+    environment: Production
     steps:
       - uses: actions/checkout@v2
 
@@ -37,7 +43,13 @@ jobs:
 
       - run: bun install
 
-      - run: bun run scripts/syncLocalization.ts
+      - name: Sync Localization Files
+        env:
+          LOCALIZELY_API_KEY: ${{ env.LOCALIZELY_API_KEY }}
+          LOCALIZELY_URL: ${{ env.LOCALIZELY_URL }}
+          LOCALIZELY_PROJECT_ID: ${{ env.LOCALIZELY_PROJECT_ID }}
+          SUPPORTED_LOCALES: ${{ env.SUPPORTED_LOCALES }}
+        run: bun run scripts/syncLocalization.ts
 
       # Install Vercel CLI and deploy the project
 
