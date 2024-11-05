@@ -1,5 +1,7 @@
 import { getRequestConfig } from "next-intl/server";
 import { cookies } from "next/dist/server/request/cookies";
+import path from "node:path";
+import fs from "node:fs/promises";
 
 export default getRequestConfig(async () => {
   const timeZone = "Asia/Ho_Chi_Minh";
@@ -10,8 +12,16 @@ export default getRequestConfig(async () => {
 
   return {
     locale,
-    messages: (await import(`../../messages/${locale}.json`)).default,
+    messages: await getMessages(locale),
     timeZone,
     now: new Date(),
   };
 });
+
+async function getMessages(locale: string) {
+  const filePath = path.join(process.cwd(), `messages/${locale}.json`);
+
+  const jsonData = await fs.readFile(filePath, "utf8");
+
+  return JSON.parse(jsonData);
+}
