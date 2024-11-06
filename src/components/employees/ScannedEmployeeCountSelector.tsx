@@ -3,19 +3,17 @@
 import { useTransition } from "react";
 import { useScannedCount, useSetScannedCount } from "./EmployeeCountProvider";
 import { SelectTrigger, SelectContent, SelectItem, SelectValue, Select } from "src/shadcn/components/ui/select";
-import { useTranslations } from "next-intl";
 
-export default function ScannedEmployeeCountSelector() {
+export default function ScannedEmployeeCountSelector({ label }: { label: string }) {
   const scannedCount = useScannedCount();
   const setScannedCount = useSetScannedCount();
 
   const [isPending, startTransition] = useTransition();
-  const t = useTranslations("home.pp_example.scanned_employee_selector");
 
   return (
     <div>
       <label htmlFor="employee-selector" className="cursor-pointer">
-        {t("label")}
+        {label}
       </label>
 
       <Select

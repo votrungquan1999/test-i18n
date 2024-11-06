@@ -4,20 +4,17 @@ import { useTransition } from "react";
 import { useSetGender } from "./GenderProvider";
 import { useGender } from "./GenderProvider";
 import { SelectTrigger, SelectContent, SelectItem, SelectValue, Select } from "src/shadcn/components/ui/select";
-import { useTranslations } from "next-intl";
 
-export default function GenderSelector() {
+export default function GenderSelector({ label }: { label: string }) {
   const gender = useGender();
   const setGender = useSetGender();
 
   const [isPending, startTransition] = useTransition();
 
-  const t = useTranslations("home.gender_selector");
-
   return (
     <div>
       <label htmlFor="gender-selector" className="cursor-pointer">
-        {t("label")}
+        {label}
       </label>
 
       <Select

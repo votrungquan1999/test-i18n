@@ -1,14 +1,12 @@
-"use client";
-
-import { useFormatter, useTranslations } from "next-intl";
+import { getFormatter, getTranslations } from "next-intl/server";
 
 interface UpdatedTimeProps {
   updatedAt: Date;
 }
 
-export default function UpdatedTime({ updatedAt }: UpdatedTimeProps) {
-  const t = useTranslations("home.pp_example");
-  const formatter = useFormatter();
+export default async function UpdatedTime({ updatedAt }: UpdatedTimeProps) {
+  const t = await getTranslations("home.pp_example");
+  const formatter = await getFormatter();
 
   const formattedTime = formatter.relativeTime(updatedAt);
 

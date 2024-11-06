@@ -3,19 +3,17 @@
 import { useTransition } from "react";
 import { useTotalCount, useSetTotalCount } from "./EmployeeCountProvider";
 import { SelectTrigger, SelectContent, SelectItem, SelectValue, Select } from "src/shadcn/components/ui/select";
-import { useTranslations } from "next-intl";
 
-export default function AllEmployeesCountSelector() {
+export default function AllEmployeesCountSelector({ label }: { label: string }) {
   const totalCount = useTotalCount();
   const setTotalCount = useSetTotalCount();
 
   const [isPending, startTransition] = useTransition();
-  const t = useTranslations("home.pp_example.all_employee_selector");
 
   return (
     <div>
       <label htmlFor="all-employee-selector" className="cursor-pointer">
-        {t("label")}
+        {label}
       </label>
 
       <Select

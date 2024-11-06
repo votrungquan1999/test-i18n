@@ -22,7 +22,10 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col gap-2 w-fit">
-      <LanguageSelector name="language" currentLocale={locale} key={locale} />
+      <div className="mb-4">
+        <label htmlFor="language-selector">{t("language_selector.label")}</label>
+        <LanguageSelector name="language-selector" currentLocale={locale} />
+      </div>
 
       <hr className="border-slate-200" />
 
@@ -31,7 +34,7 @@ export default async function Home() {
       <hr className="border-slate-200" />
 
       <GenderProvider>
-        <GenderSelector />
+        <GenderSelector label={t("gender_selector.label")} />
 
         <Instruction />
       </GenderProvider>
@@ -90,9 +93,9 @@ export default async function Home() {
         <hr className="border-slate-200" />
 
         <EmployeeCountProvider>
-          <ScannedEmployeeCountSelector />
+          <ScannedEmployeeCountSelector label={t("pp_example.scanned_employee_selector.label")} />
 
-          <AllEmployeesCountSelector />
+          <AllEmployeesCountSelector label={t("pp_example.all_employee_selector.label")} />
 
           <EmployeeCountDisplay />
         </EmployeeCountProvider>
